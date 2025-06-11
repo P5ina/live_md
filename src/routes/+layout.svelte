@@ -1,9 +1,15 @@
 <script lang="ts">
-import "../app.css";
-import { ModeWatcher } from "mode-watcher";
+	import { page } from '$app/state';
+	import { fade } from 'svelte/transition';
+	import '../app.css';
+	import { ModeWatcher } from 'mode-watcher';
 
-const { children } = $props();
+	const { children } = $props();
 </script>
 
-<ModeWatcher defaultMode={ "dark" } />
-{@render children()}
+<ModeWatcher defaultMode={'dark'} />
+{#key page.url.pathname}
+	<div in:fade={{ delay: 200, duration: 200 }} out:fade={{ duration: 200 }}>
+		{@render children()}
+	</div>
+{/key}
