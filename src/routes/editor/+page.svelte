@@ -60,10 +60,6 @@
 					<!-- Editor Panel -->
 					<div class="flex flex-col">
 						<Textarea bind:value={userText} class="flex-1 resize-none font-mono text-sm" />
-						<!-- <textarea
-						class="flex-1 p-4 border rounded-lg bg-background text-foreground font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary"
-						bind:value={userText}
-					></textarea> -->
 					</div>
 
 					<!-- Preview Panel -->

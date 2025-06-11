@@ -2,16 +2,16 @@
 	import GitHubIcon from '$lib/components/GitHubIcon.svelte';
 </script>
 
-<div class="min-h-screen bg-background text-foreground">
+<div class="bg-background text-foreground min-h-screen">
 	<!-- Navigation -->
 	<nav
-		class="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50"
+		class="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b backdrop-blur"
 	>
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="flex justify-between items-center h-16">
+			<div class="flex h-16 items-center justify-between">
 				<div class="flex items-center">
 					<div class="flex-shrink-0">
-						<h1 class="text-2xl font-bold text-primary">LiveMD</h1>
+						<h1 class="text-primary text-2xl font-bold">LiveMD</h1>
 					</div>
 				</div>
 				<div class="flex items-center space-x-4">
@@ -40,36 +40,36 @@
 	<!-- Hero Section -->
 	<section class="relative overflow-hidden py-24 sm:py-32">
 		<div
-			class="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5"
+			class="from-primary/5 via-background to-secondary/5 absolute inset-0 bg-gradient-to-br"
 		></div>
-		<div class="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-			<div class="text-center max-w-4xl mx-auto">
-				<div class="mb-8 animate-fade-in">
+		<div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="mx-auto max-w-4xl text-center">
+				<div class="animate-fade-in mb-8">
 					<h1
-						class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
+						class="from-primary to-primary/70 bg-gradient-to-r bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-6xl lg:text-7xl"
 					>
 						LiveMD
 					</h1>
-					<p class="mt-6 text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto">
+					<p class="text-muted-foreground mx-auto mt-6 max-w-2xl text-xl sm:text-2xl">
 						Open Source Real-time Collaborative Markdown Editor
 					</p>
 				</div>
 
-				<div class="mb-12 animate-fade-in-delay">
-					<p class="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+				<div class="animate-fade-in-delay mb-12">
+					<p class="text-muted-foreground mx-auto mb-8 max-w-3xl text-lg">
 						Create, edit, and share Markdown documents together with your team. Real-time
 						synchronization, beautiful preview, and intuitive interface - all completely free and
 						open source.
 					</p>
 
-					<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+					<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 						<a
-							href="/editor"
-							class="inline-flex items-center px-8 py-4 text-lg font-semibold text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl group"
+							href="/auth/signin"
+							class="text-primary-foreground bg-primary hover:bg-primary/90 group inline-flex transform items-center rounded-lg px-8 py-4 text-lg font-semibold shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl"
 						>
 							<span>Edit</span>
 							<svg
-								class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+								class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"
 								fill="none"
 								stroke="currentColor"
 								viewBox="0 0 24 24"
@@ -86,24 +86,24 @@
 				</div>
 
 				<!-- Preview mockup -->
-				<div class="relative max-w-5xl mx-auto animate-fade-in-delay-2">
+				<div class="animate-fade-in-delay-2 relative mx-auto max-w-5xl">
 					<div
-						class="relative rounded-xl border shadow-2xl bg-background/50 backdrop-blur-sm overflow-hidden"
+						class="bg-background/50 relative overflow-hidden rounded-xl border shadow-2xl backdrop-blur-sm"
 					>
-						<div class="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
+						<div class="bg-muted/50 flex items-center gap-2 border-b px-4 py-3">
 							<div class="flex gap-1.5">
-								<div class="w-3 h-3 rounded-full bg-red-500"></div>
-								<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-								<div class="w-3 h-3 rounded-full bg-green-500"></div>
+								<div class="h-3 w-3 rounded-full bg-red-500"></div>
+								<div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+								<div class="h-3 w-3 rounded-full bg-green-500"></div>
 							</div>
 							<div class="flex-1 text-center">
-								<span class="text-sm text-muted-foreground">LiveMD Editor</span>
+								<span class="text-muted-foreground text-sm">LiveMD Editor</span>
 							</div>
 						</div>
 						<div class="p-6 text-left">
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
 								<div class="space-y-2">
-									<div class="text-sm text-muted-foreground font-mono">Markdown</div>
+									<div class="text-muted-foreground font-mono text-sm">Markdown</div>
 									<div class="space-y-1 font-mono text-sm">
 										<div class="text-blue-500"># Heading</div>
 										<div class="text-muted-foreground">Regular text with **bold** and *italic*</div>
@@ -112,13 +112,13 @@
 									</div>
 								</div>
 								<div class="space-y-2">
-									<div class="text-sm text-muted-foreground">Preview</div>
+									<div class="text-muted-foreground text-sm">Preview</div>
 									<div class="space-y-2">
 										<h3 class="text-lg font-bold">Heading</h3>
 										<p class="text-sm">
 											Regular text with <strong>bold</strong> and <em>italic</em>
 										</p>
-										<ul class="text-sm list-disc list-inside space-y-1">
+										<ul class="list-inside list-disc space-y-1 text-sm">
 											<li>List</li>
 											<li>Items</li>
 										</ul>
@@ -133,22 +133,22 @@
 	</section>
 
 	<!-- Features Section -->
-	<section id="features" class="py-24 bg-muted/30">
+	<section id="features" class="bg-muted/30 py-24">
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-16">
-				<h2 class="text-3xl sm:text-4xl font-bold mb-4">Features</h2>
-				<p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+			<div class="mb-16 text-center">
+				<h2 class="mb-4 text-3xl font-bold sm:text-4xl">Features</h2>
+				<p class="text-muted-foreground mx-auto max-w-2xl text-xl">
 					Everything you need for comfortable work with Markdown documents - completely free and
 					open source
 				</p>
 			</div>
 
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 				<div
-					class="bg-background rounded-xl p-6 border shadow-sm hover:shadow-md transition-shadow"
+					class="bg-background rounded-xl border p-6 shadow-sm transition-shadow hover:shadow-md"
 				>
-					<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-						<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<div class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+						<svg class="text-primary h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -157,7 +157,7 @@
 							></path>
 						</svg>
 					</div>
-					<h3 class="text-xl font-semibold mb-2">Real-time Collaboration</h3>
+					<h3 class="mb-2 text-xl font-semibold">Real-time Collaboration</h3>
 					<p class="text-muted-foreground">
 						Work on documents together with your team in real-time. See other users' changes
 						instantly.
@@ -165,10 +165,10 @@
 				</div>
 
 				<div
-					class="bg-background rounded-xl p-6 border shadow-sm hover:shadow-md transition-shadow"
+					class="bg-background rounded-xl border p-6 shadow-sm transition-shadow hover:shadow-md"
 				>
-					<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-						<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<div class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+						<svg class="text-primary h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -183,7 +183,7 @@
 							></path>
 						</svg>
 					</div>
-					<h3 class="text-xl font-semibold mb-2">Live Preview</h3>
+					<h3 class="mb-2 text-xl font-semibold">Live Preview</h3>
 					<p class="text-muted-foreground">
 						See results in real-time. Beautiful Markdown rendering with support for all major
 						elements.
@@ -191,10 +191,10 @@
 				</div>
 
 				<div
-					class="bg-background rounded-xl p-6 border shadow-sm hover:shadow-md transition-shadow"
+					class="bg-background rounded-xl border p-6 shadow-sm transition-shadow hover:shadow-md"
 				>
-					<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-						<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<div class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+						<svg class="text-primary h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -203,29 +203,29 @@
 							></path>
 						</svg>
 					</div>
-					<h3 class="text-xl font-semibold mb-2">Export & Sharing</h3>
+					<h3 class="mb-2 text-xl font-semibold">Export & Sharing</h3>
 					<p class="text-muted-foreground">
 						Export documents to various formats or share links for quick access to your documents.
 					</p>
 				</div>
 
 				<div
-					class="bg-background rounded-xl p-6 border shadow-sm hover:shadow-md transition-shadow"
+					class="bg-background rounded-xl border p-6 shadow-sm transition-shadow hover:shadow-md"
 				>
-					<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-						<GitHubIcon class="w-6 h-6 text-primary" />
+					<div class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+						<GitHubIcon class="text-primary h-6 w-6" />
 					</div>
-					<h3 class="text-xl font-semibold mb-2">Open Source</h3>
+					<h3 class="mb-2 text-xl font-semibold">Open Source</h3>
 					<p class="text-muted-foreground">
 						Completely open source and transparent. Contribute, customize, or self-host as you need.
 					</p>
 				</div>
 
 				<div
-					class="bg-background rounded-xl p-6 border shadow-sm hover:shadow-md transition-shadow"
+					class="bg-background rounded-xl border p-6 shadow-sm transition-shadow hover:shadow-md"
 				>
-					<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-						<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<div class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+						<svg class="text-primary h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -234,7 +234,7 @@
 							></path>
 						</svg>
 					</div>
-					<h3 class="text-xl font-semibold mb-2">Privacy First</h3>
+					<h3 class="mb-2 text-xl font-semibold">Privacy First</h3>
 					<p class="text-muted-foreground">
 						Your data stays private. No tracking, no ads, no hidden costs. Just pure markdown
 						editing experience.
@@ -242,10 +242,10 @@
 				</div>
 
 				<div
-					class="bg-background rounded-xl p-6 border shadow-sm hover:shadow-md transition-shadow"
+					class="bg-background rounded-xl border p-6 shadow-sm transition-shadow hover:shadow-md"
 				>
-					<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-						<svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<div class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
+						<svg class="text-primary h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path
 								stroke-linecap="round"
 								stroke-linejoin="round"
@@ -254,7 +254,7 @@
 							></path>
 						</svg>
 					</div>
-					<h3 class="text-xl font-semibold mb-2">Fast & Responsive</h3>
+					<h3 class="mb-2 text-xl font-semibold">Fast & Responsive</h3>
 					<p class="text-muted-foreground">
 						Lightning-fast loading and smooth performance. Optimized for work on any device.
 					</p>
@@ -266,20 +266,20 @@
 	<!-- Call to Action -->
 	<section class="py-24">
 		<div class="container mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center max-w-3xl mx-auto">
-				<h2 class="text-3xl sm:text-4xl font-bold mb-6">Ready to start editing with LiveMD?</h2>
-				<p class="text-xl text-muted-foreground mb-10">
+			<div class="mx-auto max-w-3xl text-center">
+				<h2 class="mb-6 text-3xl font-bold sm:text-4xl">Ready to start editing with LiveMD?</h2>
+				<p class="text-muted-foreground mb-10 text-xl">
 					Join the open source community and start creating amazing markdown documents today. No
 					registration required.
 				</p>
-				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+				<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 					<a
 						href="/editor"
-						class="inline-flex items-center px-8 py-4 text-lg font-semibold text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl group"
+						class="text-primary-foreground bg-primary hover:bg-primary/90 group inline-flex transform items-center rounded-lg px-8 py-4 text-lg font-semibold shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl"
 					>
 						<span>Edit</span>
 						<svg
-							class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+							class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"
 							fill="none"
 							stroke="currentColor"
 							viewBox="0 0 24 24"
@@ -296,9 +296,9 @@
 						href="https://github.com"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center px-8 py-4 text-lg font-medium text-foreground border border-border rounded-lg hover:bg-muted transition-colors"
+						class="text-foreground border-border hover:bg-muted inline-flex items-center rounded-lg border px-8 py-4 text-lg font-medium transition-colors"
 					>
-						<GitHubIcon class="mr-2 w-5 h-5" />
+						<GitHubIcon class="mr-2 h-5 w-5" />
 						Star on GitHub
 					</a>
 				</div>
@@ -307,10 +307,10 @@
 	</section>
 
 	<!-- Footer -->
-	<footer class="border-t bg-muted/30">
-		<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+	<footer class="bg-muted/30 border-t">
+		<div class="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
 			<div class="text-center">
-				<div class="text-sm text-muted-foreground">
+				<div class="text-muted-foreground text-sm">
 					<p>Developed by 🐶 P5ina</p>
 				</div>
 			</div>
