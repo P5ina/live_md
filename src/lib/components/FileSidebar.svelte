@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { FileText, CircleOff } from '@lucide/svelte';
-
-	const dispatch = createEventDispatcher();
+	import { FileText, CircleOff, Plus } from '@lucide/svelte';
+	import * as Sidebar from '$lib/components/ui/sidebar';
+	import Button from './ui/button/button.svelte';
 
 	// Мокированные данные файлов
 	let files = $state([
@@ -57,35 +56,28 @@
 	function handleFileClick(file: (typeof files)[0]) {
 		files.forEach((f) => (f.isActive = false));
 		file.isActive = true;
-		dispatch('fileSelect', { file });
+		// dispatch('fileSelect', { file });
 	}
 
 	function handleNewFile() {
-		dispatch('newFile');
+		// dispatch('newFile');
 	}
 </script>
 
-<div class="h-full bg-background border-r border-border flex flex-col">
+<Sidebar.Root>
 	<!-- Header -->
-	<div class="p-4 border-b border-border">
-		<div class="flex items-center justify-between mb-3">
-			<h3 class="font-semibold text-foreground">Files</h3>
-			<button
-				onclick={handleNewFile}
-				class="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-				title="New file"
-			>
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"
-					></path>
-				</svg>
-			</button>
+	<div class="border-border border-b p-4">
+		<div class="mb-3 flex items-center justify-between">
+			<h3 class="text-foreground font-semibold">Files</h3>
+			<Button variant="ghost" onclick={handleNewFile}>
+				<Plus class="h-4 w-4" />
+			</Button>
 		</div>
 
 		<!-- Search -->
 		<div class="relative">
 			<svg
-				class="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground"
+				class="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform"
 				fill="none"
 				stroke="currentColor"
 				viewBox="0 0 24 24"
@@ -101,47 +93,48 @@
 				type="text"
 				placeholder="Search files..."
 				bind:value={searchQuery}
-				class="w-full pl-9 pr-3 py-2 text-sm bg-background border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+				class="bg-background border-input focus:ring-primary w-full rounded-md border py-2 pr-3 pl-9 text-sm focus:border-transparent focus:ring-2 focus:outline-none"
 			/>
 		</div>
 	</div>
 
 	<!-- Files List -->
-	<div class="flex-1 overflow-y-auto">
-		{#each filteredFiles as file (file.id)}
-			<button
-				onclick={() => handleFileClick(file)}
-				class="w-full p-3 text-left hover:bg-muted/50 transition-colors border-b border-border/50 group {file.isActive
-					? 'bg-muted border-l-2 border-l-primary'
-					: ''}"
-			>
-				<div class="flex items-start space-x-3">
-					<FileText class="text-lg mt-0.5" />
-					<div class="flex-1 min-w-0">
-						<div class="flex items-center justify-between">
-							<h4 class="text-sm font-medium text-foreground truncate">{file.name}</h4>
-						</div>
-						<div class="flex items-center justify-between mt-1">
-							<span class="text-xs text-muted-foreground">{file.modified}</span>
+	<Sidebar.Content>
+		<div class="flex-1 overflow-y-auto">
+			{#each filteredFiles as file (file.id)}
+				<button
+					onclick={() => handleFileClick(file)}
+					class="hover:bg-muted/50 border-border/50 group w-full border-b p-3 text-left transition-colors {file.isActive
+						? 'bg-muted border-l-primary border-l-2'
+						: ''}"
+				>
+					<div class="flex items-start space-x-3">
+						<FileText class="mt-0.5 text-lg" />
+						<div class="min-w-0 flex-1">
+							<div class="flex items-center justify-between">
+								<h4 class="text-foreground truncate text-sm font-medium">{file.name}</h4>
+							</div>
+							<div class="mt-1 flex items-center justify-between">
+								<span class="text-muted-foreground text-xs">{file.modified}</span>
+							</div>
 						</div>
 					</div>
+				</button>
+			{/each}
+
+			{#if filteredFiles.length === 0}
+				<div class="text-muted-foreground flex flex-col items-center p-4 text-center">
+					<CircleOff class="mb-2 text-2xl" />
+					<p class="text-sm">No files found</p>
 				</div>
-			</button>
-		{/each}
+			{/if}
+		</div>
+	</Sidebar.Content>
 
-		{#if filteredFiles.length === 0}
-			<div class="p-4 text-center flex flex-col items-center text-muted-foreground">
-				<CircleOff class="text-2xl mb-2" />
-				<p class="text-sm">No files found</p>
-			</div>
-		{/if}
-	</div>
-
-	<!-- Footer -->
-	<div class="p-4 border-t border-border">
-		<div class="text-xs text-muted-foreground">
+	<Sidebar.Footer>
+		<div class="text-muted-foreground text-xs">
 			{filteredFiles.length}
 			{filteredFiles.length === 1 ? 'file' : 'files'}
 		</div>
-	</div>
-</div>
+	</Sidebar.Footer>
+</Sidebar.Root>
