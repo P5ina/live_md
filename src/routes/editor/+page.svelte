@@ -6,13 +6,14 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Textarea } from '$lib/components/ui/textarea';
 
-	let userText = $state(`# Welcome to LiveMD!\nStart writing your markdown here...\n\n## Features
+	let userText = $state(
+		`# Welcome to LiveMD!\nStart writing your markdown here...\n\n## Features
 - **Real-time collaboration** 
 - Live preview
 - Export to various formats
-- Syntax highlighting
 
-> Try writing something!`);
+> Try writing something!`
+	);
 
 	let currentFileName = $state('README.md');
 	let sidebarVisible = $state(true);
@@ -43,24 +44,24 @@
 	}
 </script>
 
-<div class="min-h-screen bg-background text-foreground">
-	<header class="border-b pb-4 px-6 py-4">
+<div class="bg-background text-foreground min-h-screen">
+	<header class="border-b px-6 py-4 pb-4">
 		<div class="flex items-center justify-between">
 			<div class="flex items-center space-x-4">
 				<Button variant="ghost" onclick={toggleSidebar}>
-					<Menu class="w-5 h-5" />
+					<Menu class="h-5 w-5" />
 				</Button>
-				<a href="/" class="text-2xl font-bold text-primary">LiveMD</a>
-				<span class="text-sm text-muted-foreground">/{currentFileName}</span>
+				<a href="/" class="text-primary text-2xl font-bold">LiveMD</a>
+				<span class="text-muted-foreground text-sm">/{currentFileName}</span>
 			</div>
 			<div class="flex items-center space-x-4">
 				<button
-					class="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+					class="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2 transition-colors"
 				>
 					Share
 				</button>
 				<button
-					class="px-4 py-2 bg-secondary text-secondary-foreground rounded-md hover:bg-secondary/80 transition-colors"
+					class="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-md px-4 py-2 transition-colors"
 				>
 					Export
 				</button>
@@ -77,7 +78,7 @@
 		{/if}
 
 		<!-- Main Content -->
-		<div class="flex-1 flex flex-col p-6">
+		<div class="flex flex-1 flex-col p-6">
 			<!-- <div class="flex items-center justify-between mb-4">
 				<h2 class="text-lg font-semibold">Markdown Editor</h2>
 				<div class="flex items-center space-x-2">
@@ -89,7 +90,7 @@
 				</div>
 			</div> -->
 
-			<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1">
+			<div class="grid flex-1 grid-cols-1 gap-6 lg:grid-cols-2">
 				<!-- Editor Panel -->
 				<div class="flex flex-col">
 					<Textarea bind:value={userText} class="flex-1 resize-none font-mono text-sm" />
@@ -101,7 +102,7 @@
 
 				<!-- Preview Panel -->
 				<div class="flex flex-col">
-					<div class="flex-1 p-4 border rounded-lg bg-muted/50 overflow-auto">
+					<div class="bg-muted/50 flex-1 overflow-auto rounded-lg border p-4">
 						<article class="prose prose-sm dark:prose-invert max-w-none">
 							{@html previewHtml}
 						</article>
