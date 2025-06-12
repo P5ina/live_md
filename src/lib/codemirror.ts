@@ -54,6 +54,9 @@ export const theme = EditorView.theme(
 
 		'.cm-scroller': {
 			overflow: 'auto'
+		},
+		'.cm-placeholder': {
+			display: 'none'
 		}
 
 		// '.cm-tooltip': {

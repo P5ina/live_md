@@ -1,11 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/state';
-	import { fade } from 'svelte/transition';
 	import '../app.css';
 	import { ModeWatcher } from 'mode-watcher';
 	import { onMount } from 'svelte';
 	import { invalidate } from '$app/navigation';
-	import Header from './header.svelte';
 
 	const { children, data } = $props();
 	const { supabase, session } = data;
@@ -21,12 +18,6 @@
 </script>
 
 <ModeWatcher defaultMode={'dark'} />
-
 <div class="min-h-screen">
-	<Header />
-	{#key page.url.pathname}
-		<div in:fade={{ delay: 200, duration: 200 }} out:fade={{ duration: 200 }}>
-			{@render children()}
-		</div>
-	{/key}
+	{@render children()}
 </div>
