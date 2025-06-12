@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GitHubIcon from '$lib/components/GitHubIcon.svelte';
+	// No imports needed for this auth page
 </script>
 
 <!-- Forgot Password Section -->

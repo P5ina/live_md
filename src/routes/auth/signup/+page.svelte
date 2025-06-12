@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GitHubIcon from '$lib/components/GitHubIcon.svelte';
+	// No imports needed for this auth page
 </script>
 
 <!-- Sign Up Section -->
@@ -127,11 +127,11 @@
 								<div class="ml-3 text-sm">
 									<label for="terms" class="text-muted-foreground">
 										I agree to the
-										<a href="#" class="text-primary hover:text-primary/80 font-medium">
+										<a href="/terms" class="text-primary hover:text-primary/80 font-medium">
 											Terms of Service
 										</a>
 										and
-										<a href="#" class="text-primary hover:text-primary/80 font-medium">
+										<a href="/privacy" class="text-primary hover:text-primary/80 font-medium">
 											Privacy Policy
 										</a>
 									</label>

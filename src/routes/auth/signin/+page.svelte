@@ -1,5 +1,18 @@
 <script lang="ts">
-	import GitHubIcon from '$lib/components/GitHubIcon.svelte';
+	import * as Form from '$lib/components/ui/form';
+	import { formSchema } from './schema';
+	import { superForm } from 'sveltekit-superforms';
+	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { Separator } from '$lib/components/ui/separator';
+	import { Input } from '$lib/components/ui/input';
+
+	const { data } = $props();
+
+	const form = superForm(data.form, {
+		validators: zodClient(formSchema)
+	});
+
+	const { form: formData, enhance } = form;
 </script>
 
 <!-- Sign In Section -->
@@ -48,9 +61,10 @@
 						</button>
 
 						<!-- Divider -->
+
 						<div class="relative mb-6">
 							<div class="absolute inset-0 flex items-center">
-								<div class="border-border w-full border-t"></div>
+								<Separator />
 							</div>
 							<div class="relative flex justify-center text-sm">
 								<span class="bg-background text-muted-foreground px-2">or continue with email</span>
@@ -58,35 +72,33 @@
 						</div>
 
 						<!-- Email/Password Form -->
-						<form class="space-y-4">
-							<div>
-								<label for="email" class="mb-2 block text-sm font-medium"> Email address </label>
-								<input
-									id="email"
-									name="email"
-									type="email"
-									autocomplete="email"
-									required
-									class="border-border bg-background text-foreground placeholder-muted-foreground focus:border-primary focus:ring-primary block w-full rounded-lg border px-3 py-2 text-sm focus:ring-1 focus:outline-none"
-									placeholder="Enter your email"
-								/>
-							</div>
+						<form method="POST" class="space-y-4" use:enhance>
+							<Form.Field {form} name="email">
+								<Form.Control>
+									{#snippet children({ props })}
+										<Form.Label>Email</Form.Label>
+										<Input {...props} bind:value={$formData.email} placeholder="Enter your email" />
+									{/snippet}
+								</Form.Control>
+								<Form.FieldErrors />
+							</Form.Field>
 
-							<div>
-								<label for="password" class="mb-2 block text-sm font-medium"> Password </label>
-								<input
-									id="password"
-									name="password"
-									type="password"
-									autocomplete="current-password"
-									required
-									class="border-border bg-background text-foreground placeholder-muted-foreground focus:border-primary focus:ring-primary block w-full rounded-lg border px-3 py-2 text-sm focus:ring-1 focus:outline-none"
-									placeholder="Enter your password"
-								/>
-							</div>
+							<Form.Field {form} name="password">
+								<Form.Control>
+									{#snippet children({ props })}
+										<Form.Label>Password</Form.Label>
+										<Input
+											{...props}
+											bind:value={$formData.password}
+											placeholder="Enter your password"
+										/>
+									{/snippet}
+								</Form.Control>
+								<Form.FieldErrors />
+							</Form.Field>
 
-							<div class="flex items-center justify-between">
-								<div class="flex items-center">
+							<div class="flex items-center justify-end">
+								<!-- <div class="flex items-center">
 									<input
 										id="remember-me"
 										name="remember-me"
@@ -96,7 +108,7 @@
 									<label for="remember-me" class="text-muted-foreground ml-2 block text-sm">
 										Remember me
 									</label>
-								</div>
+								</div> -->
 								<div class="text-sm">
 									<a
 										href="/auth/forgot-password"
