@@ -5,14 +5,20 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Separator } from '$lib/components/ui/separator';
 	import { Input } from '$lib/components/ui/input';
+	import { Loader2 } from '@lucide/svelte';
 
 	const { data } = $props();
+	let errorText: string | null = $state(null);
 
 	const form = superForm(data.form, {
-		validators: zodClient(formSchema)
+		validators: zodClient(formSchema),
+		onError: (error) => {
+			console.error(error);
+			errorText = error.result.error.message;
+		}
 	});
 
-	const { form: formData, enhance } = form;
+	const { form: formData, enhance, delayed } = form;
 </script>
 
 <!-- Sign In Section -->
@@ -72,6 +78,11 @@
 						</div>
 
 						<!-- Email/Password Form -->
+						{#if errorText}
+							<div class="bg-destructive/10 text-destructive mb-4 rounded-md p-4">
+								{errorText}
+							</div>
+						{/if}
 						<form method="POST" class="space-y-4" use:enhance>
 							<Form.Field {form} name="email">
 								<Form.Control>
@@ -89,6 +100,7 @@
 										<Form.Label>Password</Form.Label>
 										<Input
 											{...props}
+											type="password"
 											bind:value={$formData.password}
 											placeholder="Enter your password"
 										/>
@@ -119,12 +131,20 @@
 								</div>
 							</div>
 
-							<button
+							<Form.Button class="w-full" disabled={$delayed}>
+								{#if $delayed}
+									<Loader2 class="h-4 w-4 animate-spin" />
+									Signing in...
+								{:else}
+									Sign in
+								{/if}
+							</Form.Button>
+							<!-- <button
 								type="submit"
 								class="text-primary-foreground bg-primary hover:bg-primary/90 group w-full transform rounded-lg px-4 py-3 text-sm font-semibold shadow-md transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
 							>
 								Sign in
-							</button>
+							</button> -->
 						</form>
 
 						<!-- Sign Up Link -->
